@@ -9,6 +9,7 @@ import SystemUser from '@/components/admin/SystemUser'
 import rewu from '@/components/admin/rewu'
 import jiance from '@/components/admin/ResultTable'
 import renyuan from '@/components/admin/UserInfo'
+import LogView from '@/components/admin/log.vue'
 
 
 Vue.use(Router)
@@ -108,7 +109,7 @@ const router= new Router({
       meta: { title: '采集任务选择' }
     },{
       path: '/code',
-      component: () => import('../components/user/Qrcode.vue'),
+      component: LogView,
       meta: { title: '生成试管二维码' }
     },
 
