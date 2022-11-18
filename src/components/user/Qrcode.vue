@@ -1,0 +1,43 @@
+<template>
+        <div style="width: 100%" class="center">
+                <van-divider>试管二维码</van-divider>
+                <div class="qrcode" ref="qrCodeUrl"></div>
+                <van-cell-group style="margin:10px">
+                        <van-field v-model="value" label="二维码序列号" placeholder="" />
+                </van-cell-group>
+                <van-button round type="info" @click="creatQrCode()" style="margin: 10px;">生成试管二维码</van-button>
+        </div>
+</template>
+<script>
+        import QRCode from 'qrcodejs2'
+        import { getUrlParam } from "@/components/js/GetUrlParam";
+        import { Dialog, Toast } from "vant";
+        export default {
+
+                data() {
+                        return {
+                                value: ''
+                        }
+                },
+                methods: {
+                        creatQrCode() {
+                                this.$refs.qrCodeUrl.innerHTML = "";
+                                new QRCode(this.$refs.qrCodeUrl, {
+                                        text: this.value, // 需要转换为二维码的内容
+                                        width: 180,
+                                        height: 180,
+                                        colorDark: '#000000',
+                                        colorLight: '#ffffff',
+                                        correctLevel: QRCode.CorrectLevel.H
+                                })
+                        },
+                }
+        }
+</script>
+<style>
+        .qrcode {
+                width: 180px;
+                height: 180px;
+                margin: 0 auto;
+        }
+</style>
